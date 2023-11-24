@@ -34,61 +34,65 @@ RSpec.describe 'Strings' do
     rhyme = "peter piper picked a peck of picked peppers"
     # In place of the line below, call a method to achieve the expected output.
     actual = rhyme.reverse
-    # `.reverse` -> returns sting w/characters in reverse order
+    # `.reverse` -> returns new string w/characters in reverse order
     expected = "sreppep dekcip fo kcep a dekcip repip retep"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 5' do
+  it 'test 5' do
     word = "ticking"
     # In place of the line below, call a method to achieve the expected output.
-    actual = word.______
+    actual = word.sub(/t/, 'k')
+    # `.sub` -> returns copy of string w/1st occurence of pattern (/t/) replaced by the 2nd argument ('k')
     expected = "kicking"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 6' do
+  it 'test 6' do
     word = "ticking"
     # In place of the line below, call a method to achieve the expected output.
-    actual = word.______
+    actual = word.sub(/ti/, 'clo')
     expected = "clocking"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 7' do
+  it 'test 7' do
     words = "five sleepy kittens"
     # In place of the line below, call a method to achieve the expected output.
-    actual = words.______
+    actual = words.gsub(/e/, '*')
+     # `.gsub` -> returns copy of string w/all occurrences of a pattern (/e/) substituted for the 2nd argument ('*')
     expected = "fiv* sl**py kitt*ns"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 8' do
+  it 'test 8' do
     greeting = "Hello!!"
     # In place of the line below, call a method to achieve the expected output.
-    actual = greeting._____
+    actual = greeting.chop
+    # `.chop` -> returns string w/last character removed
     expected = "Hello!"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 9' do
+  it 'test 9' do
     greeting = "Hello!!\n"
     # In place of the line below, call a method to achieve the expected output.
-    actual = greeting._____
+    actual = greeting.chomp
+    # `.chomp` -> returns new string w/record separator removed from end of the string
     expected = "Hello!!"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 10' do
+  it 'test 10' do
     greeting = "Hello!!\n\n"
     # In place of the line below, call a method to achieve the expected output.
-    actual = greeting._____
+    actual = greeting.chomp
     expected = "Hello!!\n"
 
     expect(actual).to eq(expected)
