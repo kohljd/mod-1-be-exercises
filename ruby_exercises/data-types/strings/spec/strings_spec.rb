@@ -145,48 +145,53 @@ RSpec.describe 'Strings' do
     expect(actual).to eq(expected)
   end
 
-  xit 'test 16' do
+  it 'test 16' do
     greeting = "Hello World!"
     # In place of the line below, call a method to get the number of 'o' in the string
-    actual = greeting._____
+    actual = greeting.count "o"
+    # `.count` -> counts number of times the characters 'o' appears in the string
     expected = 2
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 17' do
+  it 'test 17' do
     greeting = "Hello World!"
     # In place of the line below, call a method to get the number of vowels in the string
-    actual = greeting._____
+    actual = greeting.count "eo"
+    # note: could have used `.count "e" "o"`` instead if wanted 
     expected = 3
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 18' do
+  it 'test 18' do
     greeting = "Hello World!"
     # In place of the line below, call a method to check if the string includes 'llo'
-    actual = greeting._____
+    actual = greeting.include? "llo"
+    # `.include?` -> returns `true` if string contains the given string or character
     expected = true
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 19' do
+  it 'test 19' do
     greeting = "Hello World!"
     # In place of the line below, call a method to check if the string includes 'lol'
-    actual = greeting._____
+    actual = greeting.include? "lol"
     expected = false
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 20' do
+  it 'test 20' do
     greeting = "Hello World, my name is"
     name = "Harry Potter"
     # In place of the line below, use string manipulation to combine the
     #greeting and name variables to acheive the expected outcome
-    actual = _________
+    actual = greeting.concat(" ", name)
+    # `.concat` -> links given object(s) to the string
+    # the `" "` is required in order to not have the return be "Hello World, my name isHarry Potter"
     expected = "Hello World, my name is Harry Potter"
 
     expect(actual).to eq(expected)
@@ -196,7 +201,7 @@ RSpec.describe 'Strings' do
     # See if you can use another method than the last test to achieve the same goal:
     greeting = "Hello World, my name is"
     name = "Harry Potter"
-    actual = ________
+    actual = 
     expected = "Hello World, my name is Harry Potter"
 
     expect(actual).to eq(expected)
