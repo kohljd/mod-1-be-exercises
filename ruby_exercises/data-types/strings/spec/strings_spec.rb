@@ -197,29 +197,34 @@ RSpec.describe 'Strings' do
     expect(actual).to eq(expected)
   end
 
-  xit 'test 21' do
+  it 'test 21' do
     # See if you can use another method than the last test to achieve the same goal:
-    greeting = "Hello World, my name is"
+    greeting = "Hello World, my name is "
     name = "Harry Potter"
-    actual = 
+    actual = greeting << name
+    # `<<` -> appends given object to string
+    # unlike 'concat', '<<' takes a single argument
+    # greeting's string had a space added to the end to separate the "Hello World.." and "Harry Potter"
     expected = "Hello World, my name is Harry Potter"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 22' do
-    greeting = "Hello World, my name is"
+  it 'test 22' do
+    greeting = "Hello World, my name is "
     name = "Harry Potter"
-    actual = ________
+    actual = name.prepend(greeting)
+    # `.prepend` -> adds given string (greeting) to the beginning of the string (name)
     expected = "Hello World, my name is Harry Potter"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 23' do
+  it 'test 23' do
     phrase = "  \n\t to the moon\n\n\t    "
     # In place of the line below, call a method to acheive the expected outcome
-    actual = ________
+    actual = phrase.strip
+    # `.strip` -> returns copy of string w/whitespace at start and end removed
     expected = "to the moon"
 
     expect(actual).to eq(expected)
