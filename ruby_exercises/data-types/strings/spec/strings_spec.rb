@@ -98,46 +98,48 @@ RSpec.describe 'Strings' do
     expect(actual).to eq(expected)
   end
 
-  xit 'test 11' do
+  it 'test 11' do
     rhyme = "eeny, meeny, miny, moe"
     # In place of the line below, call a method to achieve the expected output.
-    actual = rhyme._____
+    actual = rhyme.delete "e"
+    # `.delete` -> returns copy of string w/all characters in the intersection of its arguments deleted
     expected = "ny, mny, miny, mo"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 12' do
+  it 'test 12' do
     rhyme = "eeny, meeny, miny, moe"
     # In place of the line below, call a method to achieve the expected output.
-    actual = rhyme._____
+    actual = rhyme.delete "aeiou"
     expected = "ny, mny, mny, m"
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 13' do
+  it 'test 13' do
     greeting = "Hello World!"
     # In place of the line below, call a method to get the number of characters in the string
-    actual = greeting._____
+    actual = greeting.length
+    # `.length` -> returns character length of the string
     expected = 12
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 14' do
+  it 'test 14' do
     greeting = "Hello World!\n"
     # In place of the line below, call a method to get the number of characters in the string
-    actual = greeting._____
+    actual = greeting.length
     expected = 13
 
     expect(actual).to eq(expected)
   end
 
-  xit 'test 15' do
+  it 'test 15' do
     greeting = "Hello       World!"
     # In place of the line below, call a method to get the number of characters in the string
-    actual = greeting._____
+    actual = greeting.length
     expected = 18
 
     expect(actual).to eq(expected)
