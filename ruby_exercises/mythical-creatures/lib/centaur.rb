@@ -4,10 +4,11 @@ class Centaur
     def initialize(name, breed)
         @name = name
         @breed = breed
+        @cranky = 0
     end
 
     def shoot
-        @shoot = @shoot + 1
+        @cranky = @cranky + 1
         "Twang!!!"
     end
    
@@ -16,11 +17,7 @@ class Centaur
     end
 
     def cranky?
-        if @shoot <= 3 || @run <= 3
-            "false"
-        else
-            "true"
-        end
+        @cranky >= 3
     end
 
     def standing?
