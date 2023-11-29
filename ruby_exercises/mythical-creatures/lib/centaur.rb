@@ -6,11 +6,12 @@ class Centaur
         @breed = breed
         @cranky = 0
         @standing = true
+        @laying = false
     end
 
     def shoot
         @cranky = @cranky + 1
-        if cranky? == false
+        if cranky? == false && laying? == false
             "Twang!!!"
         else
             "NO!"
@@ -34,13 +35,27 @@ class Centaur
         @standing
     end
 
-    def sleep
-        words
-        "NO!"
+    def laying?
+        @laying
+    end
+
+    def stand_up
+        @standing = true
+        @laying = false
     end
 
     def lay_down
         @standing = false
+        @laying = true
     end
-    
+
+    def sleep
+        @laying = true
+        @cranky = 0
+        if @standing == true
+            "NO!"
+        else
+            "Nap time :)"
+        end
+    end
 end
