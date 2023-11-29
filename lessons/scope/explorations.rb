@@ -46,10 +46,11 @@ require 'pry'
 #### ARGUMENT SCOPE
     ## Example 10
         # def print_variable(x)
-        # puts x
+        #     puts x
         # end
 
         # print_variable(4)
+        # will print 4 in console, no error
 
     ## Example 11
         # def print_variable(x)
@@ -58,23 +59,31 @@ require 'pry'
 
         # x = 4
         # print_variable(x)
+        
+        # #!returns 4 because giving x a value before calling on it in the method
+        # defining global variable `x=4` and then 
+        # passing that through the method scope via an argument
 
-    ## Example 12
+        ## Example 12
         # def print_variable(x)
         #   puts x
         # end
 
         # print_variable(2)
         # puts x
+        # 2 is being stored as method variable
+        # then x is undefined for the global scope
 
     ## Example 13
         # def print_variable(x)
-        # x = 4
-        # puts x
+        #     x = 4
+        #     puts x
         # end
 
         # print_variable(2)
         # puts x
+        # return 4 because x is defined as 4 in the method
+        # error for global undefined x (line 89)
 
 #### BLOCK SCOPE
     ## Example 14
@@ -85,6 +94,7 @@ require 'pry'
         # end
 
         # p total
+        # will add 1 + 2 + 3 + 0 all together to return 6 to the console
 
     ## Example 15
         # numbers = [1, 2, 3]
@@ -95,6 +105,7 @@ require 'pry'
         # end
 
         # p pizza
+        # undefined local variable `pizza`
 
     ## Example 16
         # numbers = [1,2,3]
@@ -104,6 +115,7 @@ require 'pry'
         # end
 
         # p number
+        # defined `numbers` but not `number`
 
     ## Example 17
         # numbers = [1,2,3]
@@ -111,6 +123,7 @@ require 'pry'
         # numbers.each do |number|
         #   puts number
         # end
+        # will put "1" "2" and "3" in the console - each # on their own lines
 
     ## Example 18
         # numbers = [1, 2, 3]
@@ -118,12 +131,15 @@ require 'pry'
         #   number = 0
         #   puts number
         # end
+        # returns "0" 3 times bc block runs 3 times for each variable and 
+        # then number set to equal "0"
 
     ## Example 19
-        # numbers = [1,2,3]
-        # def number
-        #   0
-        # end
-        # numbers.each do |number|
-        #   puts number
-        # end
+        numbers = [1,2,3]
+        def number
+          0
+        end
+        numbers.each do |number|
+          puts number
+        end
+        
