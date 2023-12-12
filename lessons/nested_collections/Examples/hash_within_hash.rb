@@ -16,3 +16,4 @@ p pets[:cat][:weight]
 
 # 5. how can I add :age => 3 to the value of the key :dog
 p pets[:dog][:age] = 3
+p pets[:dog].store(:age, 3)
