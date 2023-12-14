@@ -215,6 +215,12 @@ characters = [
 # Get a unique list of the homeworlds
 
 # ["Tatooine", "Naboo", "Alderaan" ... ]
+homeworlds = []
+
+characters.each do |character|
+    homeworlds << character[:homeworld] unless homeworlds.include?(character[:homeworld])
+end
+p homeworlds
 
 
 # Challenge #2
