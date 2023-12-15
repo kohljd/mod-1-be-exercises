@@ -1,12 +1,9 @@
 # ./jeep.rb
-class Jeep
-  def start
-    "Engine on!"
-  end
 
-  def stop
-    "Engine off!"
-  end
+require './lib/engine'
+
+class Jeep
+  include Engine
 
   def drive
     "All wheels go!"
