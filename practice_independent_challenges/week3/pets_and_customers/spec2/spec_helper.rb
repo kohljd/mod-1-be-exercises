@@ -1,0 +1,5 @@
+require './lib2/pet'
+require './lib2/customer'
+require './lib2/day_care'
+require './lib2/groomer'
+require './lib2/vet_clinic'
