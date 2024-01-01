@@ -26,4 +26,20 @@ RSpec.describe Dock do
         @dock.rent(sup_1, eugene)
         expect(@dock.rental_log).to eq({kayak_1 => patrick, kayak_2 => patrick, sup_1 => eugene})
     end
+
+    it "charges renter based on boat type" do
+        kayak_1 = Boat.new(:kayak, 20)
+        patrick = Renter.new("Patrick Star", "4242424242424242")
+        @dock.rent(kayak_1, patrick)
+        
+        expect(@dock.charge(kayak_1)).to eq({:card_number=>"4242424242424242", :charge_amount=>0})
+
+        kayak_1.add_hour
+        kayak_1.add_hour
+        expect(@dock.charge(kayak_1)).to eq({:card_number=>"4242424242424242", :charge_amount=>40})
+
+        kayak_1.add_hour
+        kayak_1.add_hour
+        expect(@dock.charge(kayak_1)).to eq({:card_number=>"4242424242424242", :charge_amount=>60})
+    end
 end
