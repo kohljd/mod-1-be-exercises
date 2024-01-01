@@ -11,13 +11,13 @@ RSpec.describe Boat do
 
     it "give boat details" do
         expect(@kayak.type).to eq(:kayak)
-        expect(@kayak.hourly_price).to deq(20)
+        expect(@kayak.hourly_price).to eq(20)
     end
 
     it "is rented by the hour" do
         expect(@kayak.hours_rented).to eq(0)
 
-        3.times @kayak.add_hour
+        3.times {@kayak.add_hour}
         expect(@kayak.hours_rented).to eq(3)
     end
 end
