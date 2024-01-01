@@ -42,4 +42,17 @@ RSpec.describe Dock do
         kayak_1.add_hour
         expect(@dock.charge(kayak_1)).to eq({:card_number=>"4242424242424242", :charge_amount=>60})
     end
+
+    it "tracks available rental boats" do
+        kayak_1 = Boat.new(:kayak, 20)
+        kayak_2 = Boat.new(:kayak, 20)
+        sup_1 = Boat.new(:standup_paddle_board, 15)
+        patrick = Renter.new("Patrick Star", "4242424242424242")
+        eugene = Renter.new("Eugene Crabs", "1313131313131313")
+        expect(@dock.returned_boats).to eq([])
+
+        @dock.rent(kayak_1, patrick)
+        @dock.return(kayak_1)
+        expect(@dock.returned_boats).to eq([kayak_1])
+    end
 end
