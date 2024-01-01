@@ -55,4 +55,42 @@ RSpec.describe Dock do
         @dock.return(kayak_1)
         expect(@dock.returned_boats).to eq([kayak_1])
     end
+
+    it "adds 1 rental hour to boats being rented" do
+        kayak_1 = Boat.new(:kayak, 20)
+        sup_1 = Boat.new(:standup_paddle_board, 15)
+
+        patrick = Renter.new("Patrick Star", "4242424242424242")
+        eugene = Renter.new("Eugene Crabs", "1313131313131313")
+        @dock.rent(kayak_1, patrick)
+        @dock.rent(sup_1, eugene)
+
+        expect(kayak_1.hours_rented).to eq(0)
+        @dock.log_hour
+        expect(kayak_1.hours_rented).to eq(1)
+
+        @dock.return(kayak_1)
+        @dock.log_hour
+        expect(sup_1.hours_rented).to eq(2)
+    end
+
+    it "tracks total revenue" do
+        kayak_1 = Boat.new(:kayak, 20)
+        sup_1 = Boat.new(:standup_paddle_board, 15)
+
+        patrick = Renter.new("Patrick Star", "4242424242424242")
+        eugene = Renter.new("Eugene Crabs", "1313131313131313")
+        @dock.rent(kayak_1, patrick)
+        @dock.rent(sup_1, eugene)
+        
+        expect(@dock.revenue).to eq(0)
+
+        @dock.log_hour
+        @dock.return(kayak_1)
+        @dock.log_hour
+        expect(@dock.revenue).to eq(20)
+
+        @dock.return(sup_1)
+        expect(@dock.revenue).to eq(50)
+    end
 end
