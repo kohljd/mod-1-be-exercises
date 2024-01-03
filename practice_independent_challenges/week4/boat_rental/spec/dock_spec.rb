@@ -71,6 +71,7 @@ RSpec.describe Dock do
 
         @dock.return(kayak_1)
         @dock.log_hour
+        expect(kayak_1.hours_rented).to eq(1)
         expect(sup_1.hours_rented).to eq(2)
     end
 
