@@ -22,11 +22,11 @@ RSpec.describe ColoradoLottery do
             @cash_5 = Game.new('Cash 5', 1)
 
             @alexander = Contestant.new({
-                       first_name: 'Alexander',
-                       last_name: 'Aigades',
-                       age: 28,
-                       state_of_residence: 'CO',
-                       spending_money: 10})
+                first_name: 'Alexander',
+                last_name: 'Aigades',
+                age: 28,
+                state_of_residence: 'CO',
+                spending_money: 10})
             @benjamin = Contestant.new({
                 first_name: 'Benjamin',
                 last_name: 'Franklin',
@@ -45,6 +45,12 @@ RSpec.describe ColoradoLottery do
                 age: 18,
                 state_of_residence: 'CO',
                 spending_money: 5})
+            @george = Contestant.new({
+                first_name: 'George',
+                last_name: 'Washington',
+                age: 18,
+                state_of_residence: 'CO',
+                spending_money: 4})
 
             @alexander.add_game_interest('Pick 4')
             @alexander.add_game_interest('Mega Millions')
@@ -52,6 +58,7 @@ RSpec.describe ColoradoLottery do
             @winston.add_game_interest('Cash 5')
             @winston.add_game_interest('Mega Millions')
             @benjamin.add_game_interest('Mega Millions')
+            @george.add_game_interest('Mega Millions')
         end
 
         it "checks if contestant interested and legal age" do
@@ -66,6 +73,41 @@ RSpec.describe ColoradoLottery do
             expect(@lottery.can_register?(@frederick, @mega_millions)).to be true
             expect(@lottery.can_register?(@benjamin, @mega_millions)).to be false
             expect(@lottery.can_register?(@frederick, @cash_5)).to be false
+        end
+
+        it "registers contestants" do
+            @lottery.register_contestant(@alexander, @pick_4)
+            @lottery.register_contestant(@frederick, @mega_millions)
+            @lottery.register_contestant(@benjamin, @mega_millions)
+
+            expect(@lottery.registered_contestants).to eq({@pick_4 => @alexander, @mega_millions => @frederick})
+        end
+
+        it "lists eligible contestants" do
+            @lottery.register_contestant(@frederick, @mega_millions)
+            @lottery.register_contestant(@winston, @mega_millions)
+            @lottery.register_contestant(@george, @mega_millions)
+
+            expect(@lottery.eligible_contestants(@mega_millions)).to eq([@frederick, @winston])
+        end
+
+        describe "current contestants" do
+            it "charges contestants" do
+                expect(@alexander.spending_money).to eq(10)
+
+                @lottery.register_contestant(@alexander, @mega_millions)
+                @lottery.current_contestants(@mega_millions)
+                expect(@alexander.spending_money).to eq(5)
+            end
+
+            it "lists current contestants by game" do
+                @lottery.register_contestant(@alexander, @pick_4)
+                @lottery.register_contestant(@alexander, @mega_millions)
+                @lottery.register_contestant(@frederick, @mega_millions)
+                @lottery.register_contestant(@winston, @cash_5)
+
+                expect(@lottery.current_contestants).to eq({@pick_4 => ["Alexander Aigiades"], @mega_millions => ["Alexander Aigiades", "Frederick Douglass"], @cash_5 => ["Winston Churchhill"]})
+            end
         end
     end
 end
