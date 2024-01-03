@@ -16,4 +16,8 @@ class Contestant
         @full_name = contestant_info.values_at(:first_name, :last_name).join(" ")
         @game_interests = []
     end
+
+    def add_game_interest(game_name)
+        @game_interests << game_name
+    end
 end
