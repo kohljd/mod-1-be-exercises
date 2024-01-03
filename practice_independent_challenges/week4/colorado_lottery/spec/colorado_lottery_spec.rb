@@ -1,6 +1,6 @@
 require "./spec/spec_helper"
 
-RSPec.describe ColoradoLottery do
+RSpec.describe ColoradoLottery do
     before(:each) do
         @lottery = ColoradoLottery.new
     end
