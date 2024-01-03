@@ -20,4 +20,9 @@ class Contestant
     def add_game_interest(game_name)
         @game_interests << game_name
     end
+
+    def out_of_state?
+        return true unless @state_of_residence == "CO"
+        false
+    end
 end
