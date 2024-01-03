@@ -27,4 +27,11 @@ RSpec.describe Contestant do
         
         expect(@alexander.game_interests).to eq(["Mega Millions", "Pick 4"])
     end
+
+    it "tells if from out of state" do
+        expect(@alexander.out_of_state?).to be false
+
+        george = Contestant.new({state_of_residence: 'MN'})
+        expect(george.out_of_state).to be true
+    end
 end
