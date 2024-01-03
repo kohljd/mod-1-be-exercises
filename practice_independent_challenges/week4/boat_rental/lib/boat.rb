@@ -1,5 +1,6 @@
 class Boat
-    attr_reader :type, :hourly_price, :hours_rented
+    attr_reader :type, :hourly_price
+    attr_accessor :hours_rented
 
     def initialize (type, hourly_price)
         @type = type
