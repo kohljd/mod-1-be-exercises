@@ -27,6 +27,6 @@ class Contestant
     end
 
     def charge(game_cost)
-        @spending_money - game_cost
+        @spending_money -= game_cost
     end
 end
