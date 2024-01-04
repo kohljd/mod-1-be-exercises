@@ -124,5 +124,6 @@ RSpec.describe ColoradoLottery do
                 expect(@lottery.winners.size).to eq(3)
                 expect(@lottery.winners[0]).to be_a(Hash)
             end
+        end
     end
 end
