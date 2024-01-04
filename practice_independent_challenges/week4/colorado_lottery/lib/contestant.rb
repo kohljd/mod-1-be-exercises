@@ -25,4 +25,8 @@ class Contestant
         return true unless @state_of_residence == "CO"
         false
     end
+
+    def charge(game_cost)
+        @spending_money - game_cost
+    end
 end
