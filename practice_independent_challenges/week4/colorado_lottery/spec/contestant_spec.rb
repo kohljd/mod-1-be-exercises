@@ -34,4 +34,10 @@ RSpec.describe Contestant do
         george = Contestant.new({state_of_residence: 'MN'})
         expect(george.out_of_state?).to be true
     end
+
+    it "can be charged" do
+        @alexander.add_game_interest('Mega Millions')
+
+        expect(@alexander.charge(5)).to eq(5)
+    end
 end
