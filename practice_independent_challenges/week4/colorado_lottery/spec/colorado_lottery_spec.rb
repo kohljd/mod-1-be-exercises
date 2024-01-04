@@ -15,7 +15,7 @@ RSpec.describe ColoradoLottery do
         expect(@lottery.current_contestants).to eq({})
     end
 
-    describe "interest and registration" do
+    describe "interest, registration, and lottery winners" do
         before(:each) do
             @pick_4 = Game.new('Pick 4', 2)
             @mega_millions = Game.new('Mega Millions', 5, true)
@@ -110,5 +110,19 @@ RSpec.describe ColoradoLottery do
                 expect(@lottery.current_contestants).to eq({@pick_4 => ["Alexander Aigiades"], @mega_millions => ["Alexander Aigiades", "Frederick Douglass"], @cash_5 => ["Winston Churchill"]})
             end
         end
+
+        describe "winning scenario" do
+            before(:each) do
+                @lottery.register_contestant(@alexander, @pick_4)
+                @lottery.register_contestant(@alexander, @mega_millions)
+                @lottery.register_contestant(@frederick, @mega_millions)
+                @lottery.register_contestant(@winston, @cash_5)
+            end
+
+            it "randomly draws winners" do
+                @lottery.draw_winners
+                expect(@lottery.winners.size).to eq(3)
+                expect(@lottery.winners[0]).to be_a(Hash)
+            end
     end
 end
