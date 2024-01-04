@@ -1,3 +1,5 @@
+require "date"
+
 class ColoradoLottery
     attr_reader :registered_contestants,
                 :winners,
@@ -40,5 +42,21 @@ class ColoradoLottery
             end
         end
         @current_contestants
+    end
+
+    def draw_winners
+        @winners.clear
+        current_contestants
+        @current_contestants.each do |game, contestants|
+            @winners << {game.name => contestants.sample}
+        end 
+        Date.today.to_s
+        @winners.map! {|game_winner| game_winner.invert}
+        announce_winners
+    end
+
+    def announce_winners
+        puts "Congratulations winners:"
+        @winners.each {|winner| winner_text = puts winner.to_a.join(" for ")}       
     end
 end
