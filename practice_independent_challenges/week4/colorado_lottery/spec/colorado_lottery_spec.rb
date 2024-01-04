@@ -23,7 +23,7 @@ RSpec.describe ColoradoLottery do
 
             @alexander = Contestant.new({
                 first_name: 'Alexander',
-                last_name: 'Aigades',
+                last_name: 'Aigiades',
                 age: 28,
                 state_of_residence: 'CO',
                 spending_money: 10})
@@ -80,7 +80,7 @@ RSpec.describe ColoradoLottery do
             @lottery.register_contestant(@frederick, @mega_millions)
             @lottery.register_contestant(@benjamin, @mega_millions)
 
-            expect(@lottery.registered_contestants).to eq({@pick_4 => @alexander, @mega_millions => @frederick})
+            expect(@lottery.registered_contestants).to eq({@pick_4 => [@alexander], @mega_millions => [@frederick]})
         end
 
         it "lists eligible contestants" do
@@ -92,11 +92,11 @@ RSpec.describe ColoradoLottery do
         end
 
         describe "current contestants" do
-            it "charges contestants" do
+            it "charges contestant game cost" do
                 expect(@alexander.spending_money).to eq(10)
 
                 @lottery.register_contestant(@alexander, @mega_millions)
-                @lottery.current_contestants(@mega_millions)
+                @lottery.current_contestants
                 expect(@alexander.spending_money).to eq(5)
             end
 
@@ -104,9 +104,10 @@ RSpec.describe ColoradoLottery do
                 @lottery.register_contestant(@alexander, @pick_4)
                 @lottery.register_contestant(@alexander, @mega_millions)
                 @lottery.register_contestant(@frederick, @mega_millions)
+                @lottery.register_contestant(@george, @mega_millions)
                 @lottery.register_contestant(@winston, @cash_5)
 
-                expect(@lottery.current_contestants).to eq({@pick_4 => ["Alexander Aigiades"], @mega_millions => ["Alexander Aigiades", "Frederick Douglass"], @cash_5 => ["Winston Churchhill"]})
+                expect(@lottery.current_contestants).to eq({@pick_4 => ["Alexander Aigiades"], @mega_millions => ["Alexander Aigiades", "Frederick Douglass"], @cash_5 => ["Winston Churchill"]})
             end
         end
     end
