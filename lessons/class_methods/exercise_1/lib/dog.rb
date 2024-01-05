@@ -18,8 +18,8 @@ class Dog
 
   def woof
     #binding.pry ## When calling .woof on a Dog class, will this pry be hit?
-    "Woof!"
     @number_of_woofs += 1
+    "Woof!"
   end
 
   def self.woof

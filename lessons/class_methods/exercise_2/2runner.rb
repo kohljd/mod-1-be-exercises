@@ -15,3 +15,5 @@ users = [
 
 user_objects = User.create_multiple(users)
 #binding.pry ## What is user_objects?
+#creates an array of user objects
+# [User]
