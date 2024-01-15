@@ -35,7 +35,7 @@ class Curator
     end
 
     def photos_within(start_date, end_date)
-        #code
+        @photographs.select {|photo| photo.year.to_i >= start_date.to_i && photo.year.to_i <= end_date.to_i}
     end
 
     def artist_age_for(photo)

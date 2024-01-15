@@ -170,7 +170,7 @@ RSpec.describe Curator do
         expect(@curator.photos_from_country("France")).to eq([photo_1])
     end
 
-    xit 'can return photos in year range' do
+    it 'can return photos in year range' do
         photo_1 = Photograph.new({
             id: "1",      
             name: "Rue Mouffetard, Paris (Boy with Bottles)",      
