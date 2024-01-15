@@ -1,14 +1,14 @@
 require './spec/spec_helper'
 
-RSpec describe Photograph do
+RSpec.describe Photograph do
     before(:each) do
-        @photograph = Photograph.new(@attributes)
         @attributes = {
             id: "1",
             name: "Rue Mouffetard, Paris (Boy with Bottles)",
             artist_id: "4",
             year: "1954"
           }
+        @photograph = Photograph.new(@attributes)
     end
 
     it 'exists' do
@@ -16,9 +16,9 @@ RSpec describe Photograph do
     end
 
     it 'has attributes' do
-        expcet(@photograph.id).to eq("1")
-        expcet(@photograph.name).to eq("Rue Mouffetard, Paris (Boy with Bottles)")
-        expcet(@photograph.artist_id).to eq("4")
-        expcet(@photograph.year).to eq("1954")
+        expect(@photograph.id).to eq("1")
+        expect(@photograph.name).to eq("Rue Mouffetard, Paris (Boy with Bottles)")
+        expect(@photograph.artist_id).to eq("4")
+        expect(@photograph.year).to eq("1954")
     end
 end
