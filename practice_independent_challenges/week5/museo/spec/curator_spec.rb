@@ -189,4 +189,25 @@ RSpec.describe Curator do
         expect(@curator.photos_within("1940", "1950")).to eq([photo_2])
         expect(@curator.photos_within("1940", "1954")).to eq([photo_1, photo_2])
     end
+
+    it 'returns artist age when phot taken' do
+        photo_1 = Photograph.new({
+            id: "1",      
+            name: "Rue Mouffetard, Paris (Boy with Bottles)",      
+            artist_id: "1",      
+            year: "1954"      
+        })
+        artist_1 = Artist.new({
+            id: "1",      
+            name: "Henri Cartier-Bresson",      
+            born: "1908",      
+            died: "2004",      
+            country: "France"      
+        })
+
+        @curator.add_photograph(photo_1)
+        @curator.add_artist(artist_1)
+
+        expect(@curator.artist_age_).to eq(46)
+    end
 end

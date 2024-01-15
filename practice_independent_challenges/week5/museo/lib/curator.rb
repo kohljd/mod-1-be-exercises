@@ -33,4 +33,8 @@ class Curator
         gallery = list_artists_works
         gallery.filter_map {|artist, photos| photos if artist.country == country}.flatten
     end
+
+    def photos_within(start_date, end_date)
+        #code
+    end
 end
