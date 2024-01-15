@@ -30,6 +30,7 @@ class Curator
     end
 
     def photos_from_country(country)
-        #code
+        gallery = list_artists_works
+        gallery.filter_map {|artist, photos| photos if artist.country == country}.flatten
     end
 end

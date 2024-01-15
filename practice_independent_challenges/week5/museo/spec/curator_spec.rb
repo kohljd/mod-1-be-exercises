@@ -142,7 +142,7 @@ RSpec.describe Curator do
             year: "1954"      
         })
         photo_2 = Photograph.new({
-            id: "1",      
+            id: "2",      
             name: "Moonrise, Hernandez",      
             artist_id: "2",      
             year: "1941"      
