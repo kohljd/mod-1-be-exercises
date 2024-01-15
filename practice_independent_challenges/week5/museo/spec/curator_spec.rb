@@ -169,4 +169,24 @@ RSpec.describe Curator do
 
         expect(@curator.photos_from_country("France")).to eq([photo_1])
     end
+
+    it 'can return photos in year range' do
+        photo_1 = Photograph.new({
+            id: "1",      
+            name: "Rue Mouffetard, Paris (Boy with Bottles)",      
+            artist_id: "1",      
+            year: "1954"      
+        })
+        photo_2 = Photograph.new({
+            id: "2",      
+            name: "Moonrise, Hernandez",      
+            artist_id: "2",      
+            year: "1941"      
+        })
+        @curator.add_photograph(photo_1)
+        @curator.add_photograph(photo_2)
+
+        expect(@curator.photos_within("1940", "1950")).to eq([photo_2])
+        expect(@curator.photos_within("1940", "1954")).to eq([photo_1, photo_2])
+    end
 end
