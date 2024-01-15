@@ -95,7 +95,7 @@ RSpec.describe Curator do
         @curator.add_artist(artist_1)
         @curator.add_artist(artist_2)
 
-        expect(@curator.list_artists_works).to eq({artist_1 => photo_1, artist_2 => photo_2})
+        expect(@curator.list_artists_works).to eq({artist_1 => [photo_1], artist_2 => [photo_2]})
     end
 
     it 'can list artists with multiple works' do
