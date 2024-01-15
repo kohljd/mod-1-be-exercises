@@ -106,9 +106,9 @@ RSpec.describe Curator do
             year: "1954"      
         })
         photo_2 = Photograph.new({
-            id: "1",      
+            id: "2",      
             name: "Moonrise, Hernandez",      
-            artist_id: "2",      
+            artist_id: "1",      
             year: "1941"      
         })
         artist_1 = Artist.new({
@@ -131,7 +131,7 @@ RSpec.describe Curator do
         @curator.add_artist(artist_1)
         @curator.add_artist(artist_2)
 
-        expect(@curator.artists_with_multiple_works).to eq(artist_1.name)
+        expect(@curator.artists_with_multiple_works).to eq([artist_1.name])
     end
 
     it 'can list photos by artist country' do

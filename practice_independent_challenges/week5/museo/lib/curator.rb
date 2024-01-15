@@ -24,7 +24,9 @@ class Curator
     end
 
     def artists_with_multiple_works
-        #code
+        gallery = list_artists_works
+        gallery.transform_values! {|photos| photos.count}
+        gallery.filter_map {|artist, work_number| artist.name if work_number > 1}
     end
 
     def photos_from_country(country)
