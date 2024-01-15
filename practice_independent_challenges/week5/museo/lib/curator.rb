@@ -37,4 +37,11 @@ class Curator
     def photos_within(start_date, end_date)
         #code
     end
+
+    def artist_age_for(photo)
+        photo = @photographs.find {|picture| picture == photo}
+        artist = @artists.find {|artist| artist.id == photo.artist_id}
+        
+        photo.year.to_i - artist.born.to_i
+    end
 end
